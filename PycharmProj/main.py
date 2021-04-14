@@ -24,7 +24,7 @@ print("* recording")
 
 frames = []
 
-for i in range(0, int(RATE/CHUNK * RECORD_SETTINGS)):
+for i in range(0, int(RATE / CHUNK * RECORD_SETTINGS)):
     data = stream.read(CHUNK)
     frames.append(data)
 
@@ -34,13 +34,14 @@ stream.stop_stream()
 stream.close()
 p.terminate()
 
-wf = wave.open(WAVE_OUTPUT_FILENAME, "wb")
+wf = wave.open(WAVE_OUTPUT_FILENAME, 'wb')
 wf.setnchannels(CHANNELS)
 wf.setsampwidth(p.get_sample_size(FORMAT))
-wf.setframerate(b''.join(frames))
+wf.setframerate(RATE)
+wf.writeframes(b''.join(frames))
 wf.close()
 
-# SPEECH RECOGNITION
+# Speech Recognition
 
 AUDIO_FILE = path.join(path.dirname(path.realpath(__file__)), "output.wav")
 
@@ -51,11 +52,11 @@ with sr.AudioFile(AUDIO_FILE) as source:
 outputString = r.recognize_google(audio)
 
 try:
-    print("Google thinks you said " + outputString)
+    print("Sphinx thinks you said " + outputString)
 except sr.UnknownValueError:
-    print("Google could not understand audio")
+    print("Sphinx could not understand audio")
 except sr.RequestError as e:
-    print("Google error; {0}".format(e))
+    print("Sphinx error; {0}".format(e))
 
 tts = gTTS(outputString)
 tts.save("tts.mp3")
