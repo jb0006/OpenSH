@@ -1,10 +1,5 @@
-import speech_recognition as sr
 import pyaudio
 import wave
-from gtts import gTTS
-from os import path
-from playsound import playsound
-
 CHUNK = 1024
 FORMAT = pyaudio.paInt16
 CHANNELS = 2
@@ -40,24 +35,3 @@ wf.setsampwidth(p.get_sample_size(FORMAT))
 wf.setframerate(RATE)
 wf.writeframes(b''.join(frames))
 wf.close()
-
-# Speech Recognition
-
-AUDIO_FILE = path.join(path.dirname(path.realpath(__file__)), "output.wav")
-
-r = sr.Recognizer()
-with sr.AudioFile(AUDIO_FILE) as source:
-    audio = r.record(source)
-
-outputString = r.recognize_google(audio)
-
-try:
-    print("Recognition thinks you said " + outputString)
-except sr.UnknownValueError:
-    print("Recognition could not understand audio")
-except sr.RequestError as e:
-    print("Recognition error; {0}".format(e))
-
-tts = gTTS(outputString)
-tts.save("tts.mp3")
-playsound("tts.mp3")
