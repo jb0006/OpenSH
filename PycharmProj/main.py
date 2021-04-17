@@ -4,12 +4,13 @@ import wave
 from gtts import gTTS
 from os import path
 from playsound import playsound
+import msvcrt
 
 CHUNK = 1024
 FORMAT = pyaudio.paInt16
 CHANNELS = 2
 RATE = 44100
-RECORD_SETTINGS = 5
+RECORD_SETTINGS = 3
 WAVE_OUTPUT_FILENAME = "output.wav"
 
 p = pyaudio.PyAudio()
@@ -20,13 +21,25 @@ stream = p.open(format=FORMAT,
                 input=True,
                 frames_per_buffer=CHUNK)
 
+print("Press Esc to start recording")
+
+while 1:
+    if msvcrt.kbhit():
+        if ord(msvcrt.getch()) == 27:
+            break
+
 print("* recording")
 
 frames = []
 
-for i in range(0, int(RATE / CHUNK * RECORD_SETTINGS)):
+
+
+while 1:
     data = stream.read(CHUNK)
     frames.append(data)
+    if msvcrt.kbhit():
+        if ord(msvcrt.getch()) == 27:
+            break
 
 print("* done recording")
 
