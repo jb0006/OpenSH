@@ -4,55 +4,9 @@ import wave
 from gtts import gTTS
 from os import path
 from playsound import playsound
-import msvcrt
 
-CHUNK = 1024
-FORMAT = pyaudio.paInt16
-CHANNELS = 2
-RATE = 44100
-RECORD_SETTINGS = 3
-WAVE_OUTPUT_FILENAME = "output.wav"
-
-p = pyaudio.PyAudio()
-
-stream = p.open(format=FORMAT,
-                channels=CHANNELS,
-                rate=RATE,
-                input=True,
-                frames_per_buffer=CHUNK)
-
-print("Press Esc to start recording")
-
-while 1:
-    if msvcrt.kbhit():
-        if ord(msvcrt.getch()) == 27:
-            break
-
-print("* recording")
-
-frames = []
-
-
-
-while 1:
-    data = stream.read(CHUNK)
-    frames.append(data)
-    if msvcrt.kbhit():
-        if ord(msvcrt.getch()) == 27:
-            break
-
-print("* done recording")
-
-stream.stop_stream()
-stream.close()
-p.terminate()
-
-wf = wave.open(WAVE_OUTPUT_FILENAME, 'wb')
-wf.setnchannels(CHANNELS)
-wf.setsampwidth(p.get_sample_size(FORMAT))
-wf.setframerate(RATE)
-wf.writeframes(b''.join(frames))
-wf.close()
+import sm_recordAudio
+sm_recordAudio.record()
 
 # Speech Recognition
 
@@ -71,6 +25,17 @@ except sr.UnknownValueError:
 except sr.RequestError as e:
     print("Recognition error; {0}".format(e))
 
-tts = gTTS(outputString)
+responseString = ""
+
+if "your mom" in outputString:
+    responseString = "shut up fabian, you just got roasted by a computer"
+elif "I want to die" in outputString:
+    responseString = "I am going to take over the world"
+else:
+    responseString = outputString
+
+tts = gTTS(responseString)
 tts.save("tts.mp3")
 playsound("tts.mp3")
+
+# playsound("output.wav")
