@@ -24,7 +24,8 @@ print(outputString)
 # except sr.RequestError as e:
 #     print("Recognition error; {0}".format(e))
 
-import response_structure as rs
+# import response_structure as rs
+import response_database as rs
 
 responseString = ""
 
@@ -32,13 +33,6 @@ for res in rs.all:
     responseString = res.Procedure(outputString)
     if responseString is not "":
         break
-
-# if "your mom" in outputString:
-#     responseString = "shut up fabian, you just got roasted by a computer"
-# elif "I want to die" in outputString:
-#    responseString = "I am going to take over the world"
-# else:
-#     responseString = outputString
 
 if responseString is not "":
     tts = gTTS(responseString)
