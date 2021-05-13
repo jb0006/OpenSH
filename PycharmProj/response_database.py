@@ -1,4 +1,7 @@
 from response_structure import *
+from pyjoke.PyJoke import *
+
+pJoke = PyJoke()
 
 all = [
     Command(["joe mama", "what is 1 + 1"], "good question",
@@ -19,5 +22,6 @@ all = [
              ParameterNode(["presenters"],
                            "Hello Juan, Chris, Aiden, Antonio, Derek, and Jackie"),
              ParameterNode(["teacher"],
-                           "Hello, Mr. Rajewich!")])
+                           "Hello, Mr. Rajewich!")]),
+    Command(["joke"], pJoke.getJoke())
 ]

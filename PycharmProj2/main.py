@@ -142,7 +142,7 @@ if __name__ == '__main__':
             speak("What would you like to call me?")
             assname = takeCommand()
             speak("Thank you for naming me")
-        elif "what's your name" in query or "what is your name" in query
+        elif "what's your name" in query or "what is your name" in query:
             speak("My friends call me")
             speak(assname)
             print("My friends call me", assname)

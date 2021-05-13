@@ -1,9 +1,4 @@
 
-class Action:
-    def __init__(self, keywords, ):
-
-
-
 class ParameterNode:
     def __init__(self, keywords, response, code_to_run=None):
         self.keywords = keywords
