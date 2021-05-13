@@ -13,4 +13,11 @@ all = [
                            "Turning the lights off!",
                            code_to_run="print('--executed command to turn lights off--')")]),
     Command(["say something funny"], "something funny"),
+    Command(["say hi"], "hi to who?",
+            [ParameterNode(["audience"],
+                           "Hello, audience!"),
+             ParameterNode(["presenters"],
+                           "Hello Juan, Chris, Aiden, Antonio, Derek, and Jackie"),
+             ParameterNode(["teacher"],
+                           "Hello, Mr. Rajewich!")])
 ]

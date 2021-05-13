@@ -3,6 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="7033763c-6586-475b-972d-2ea0140646fa" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/output.wav" beforeDir="false" afterPath="$PROJECT_DIR$/output.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/response_database.py" beforeDir="false" afterPath="$PROJECT_DIR$/response_database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/response_structure.py" beforeDir="false" afterPath="$PROJECT_DIR$/response_structure.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tts.mp3" beforeDir="false" afterPath="$PROJECT_DIR$/tts.mp3" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +93,14 @@
       <option name="project" value="LOCAL" />
       <updated>1620247545610</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Works executing code in commands.">
+      <created>1620247811410</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1620247811410</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
