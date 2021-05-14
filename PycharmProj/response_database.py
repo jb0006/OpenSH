@@ -1,27 +1,23 @@
 from response_structure import *
-from pyjoke.PyJoke import *
+import webbrowser
 
-pJoke = PyJoke()
+def EvaluateSpeech(query: str) -> str:
+    response = "You said: " + query + ", but I did not understand that."
+    if "lights" in query:
+        if get_boolean(query) in "on":
+            response = "turning the lights on"
+        elif get_boolean(query) in "off":
+            response = "turning the lights off"
+        else:
+            response = "turn the lights what? on or off?"
+    elif "say hi to" in query or "say hello to" in query:
+        response = "Hello, " + query.replace("say hi to", "")
+    elif "wikipedia" in query:
+        response = "Opening Wikipedia..."
+        webbrowser.open("https://en.wikipedia.org/wiki/Main_Page")
+    elif "play" in query and "youtube" in query:
+        response = "Playing "
+        response += query.replace("play", "").replace("in youtube", "").replace("on youtube", "")
+        response += "on Youtube"
 
-all = [
-    Command(["joe mama", "what is 1 + 1"], "good question",
-            [ParameterNode(["hot"],
-                           "NOT FUNNY, DIDN'T LAUGH", code_to_run="print('lmfao')")]),
-    Command(["you suck"], "no, please do not say that"),
-    Command(["lights", "turn lights", "turn the lights"], "turning the lights, what? on or off?",
-            [ParameterNode(["on"],
-                           "Turning the lights on!",
-                           code_to_run="print('--executed command to turn lights on--')"),
-             ParameterNode(["off"],
-                           "Turning the lights off!",
-                           code_to_run="print('--executed command to turn lights off--')")]),
-    Command(["say something funny"], "something funny"),
-    Command(["say hi"], "hi to who?",
-            [ParameterNode(["audience"],
-                           "Hello, audience!"),
-             ParameterNode(["presenters"],
-                           "Hello Juan, Chris, Aiden, Antonio, Derek, and Jackie"),
-             ParameterNode(["teacher"],
-                           "Hello, Mr. Rajewich!")]),
-    Command(["joke"], pJoke.getJoke())
-]
+    return response
