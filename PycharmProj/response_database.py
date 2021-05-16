@@ -6,8 +6,14 @@ def EvaluateSpeech(query: str) -> str:
     if "lights" in query:
         if get_boolean(query) in "on":
             response = "turning the lights on"
+
+            # Put whatever u need for the lights turning on
+
         elif get_boolean(query) in "off":
             response = "turning the lights off"
+
+            # Put whatever u need for the lights turning off
+
         else:
             response = "turn the lights what? on or off?"
     elif "say hi to" in query or "say hello to" in query:
