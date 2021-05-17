@@ -16,22 +16,22 @@ def EvaluateSpeech(query: str) -> str:
 
             webbrowser.open(ip + "/?r0g0b0&")
 
-        elif get_boolean(query) in "red":
+        elif "red" in query:
             response = "changing lights to red"
 
             webbrowser.open(ip + "/?r255g0b0&")
 
-        elif get_boolean(query) in "green":
+        elif "green" in query:
             response = "changing lights to green"
 
             webbrowser.open(ip + "/?r0g255b0&")
 
-        elif get_boolean(query) in "blue":
+        elif "blue" in query:
             response = "changing lights to blue"
 
             webbrowser.open(ip + "/?r0g0b255&")
 
-        elif get_boolean(query) in "purple":
+        elif "purple" in query:
             response = "changing lights to purple"
 
             webbrowser.open(ip + "/?r255g0b255&")

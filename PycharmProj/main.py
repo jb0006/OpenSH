@@ -14,7 +14,8 @@ r = sr.Recognizer()
 with sr.AudioFile(AUDIO_FILE) as source:
     audio = r.record(source)
 
-outputString = r.recognize_google(audio).lower()
+# outputString = r.recognize_google(audio).lower()
+outputString = r.recognize_bing(audio).lower()
 print(outputString)
 
 import response_database as rs
