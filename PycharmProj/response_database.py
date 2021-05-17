@@ -1,18 +1,40 @@
 from response_structure import *
 import webbrowser
 
+ip = "192.168.43.193"
+
 def EvaluateSpeech(query: str) -> str:
     response = "You said: " + query + ", but I did not understand that."
     if "lights" in query:
         if get_boolean(query) in "on":
             response = "turning the lights on"
 
-            # Put whatever u need for the lights turning on
+            webbrowser.open(ip + "/?r255g255b255&")
 
         elif get_boolean(query) in "off":
             response = "turning the lights off"
 
-            # Put whatever u need for the lights turning off
+            webbrowser.open(ip + "/?r0g0b0&")
+
+        elif get_boolean(query) in "red":
+            response = "changing lights to red"
+
+            webbrowser.open(ip + "/?r255g0b0&")
+
+        elif get_boolean(query) in "green":
+            response = "changing lights to green"
+
+            webbrowser.open(ip + "/?r0g255b0&")
+
+        elif get_boolean(query) in "blue":
+            response = "changing lights to blue"
+
+            webbrowser.open(ip + "/?r0g0b255&")
+
+        elif get_boolean(query) in "purple":
+            response = "changing lights to purple"
+
+            webbrowser.open(ip + "/?r255g0b255&")
 
         else:
             response = "turn the lights what? on or off?"
