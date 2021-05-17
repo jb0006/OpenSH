@@ -2,8 +2,8 @@
 #include <WiFiClient.h>
 #include <ESP8266WebServer.h>
 /* Set these to your desired credentials. */
-const char *ssid = "IceyHot"; //Enter your WIFI ssid
-const char *password = "bigboi123"; //Enter your WIFI password
+const char *ssid = "NETGEAR13"; //Enter your WIFI ssid
+const char *password = "heavyapple742"; //Enter your WIFI password
 ESP8266WebServer server(80);
 void handleRoot() {
  server.send(200, "text/html", "<form action=\"/LED_BUILTIN_on\" method=\"get\" id=\"form1\"></form><button type=\"submit\" form=\"form1\" value=\"On\">On</button><form action=\"/LED_BUILTIN_off\" method=\"get\" id=\"form2\"></form><button type=\"submit\" form=\"form2\" value=\"Off\">Off</button>");

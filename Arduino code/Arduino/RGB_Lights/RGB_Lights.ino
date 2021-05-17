@@ -7,8 +7,8 @@
 #include <ESP8266WiFi.h>
 
 // Replace with your network credentials
-const char* ssid     = "IceyHot";
-const char* password = "bigboi123";
+const char* ssid     = "NETGEAR13";
+const char* password = "heavyapple742";
 
 // Set web server port number to 80
 WiFiServer server(80);
@@ -37,7 +37,8 @@ const int resolution = 256;
 unsigned long currentTime = millis();
 // Previous time
 unsigned long previousTime = 0; 
-// Define timeout time in milliseconds (example: 2000ms = 2s)
+ //Define 
+// timeout time in milliseconds (example: 2000ms = 2s)
 const long timeoutTime = 2000;
 
 void setup() {
@@ -45,9 +46,9 @@ void setup() {
   
   // configure LED PWM resolution/range and set pins to LOW
   analogWriteRange(resolution);
-  analogWrite(redPin, 0);
-  analogWrite(greenPin, 0);
-  analogWrite(bluePin, 0);
+  analogWrite(redPin, 255);
+  analogWrite(greenPin, 255);
+  analogWrite(bluePin, 255);
   
   // Connect to Wi-Fi network with SSID and password
   Serial.print("Connecting to ");
@@ -117,12 +118,13 @@ void loop(){
               /*Serial.println(redString.toInt());
               Serial.println(greenString.toInt());
               Serial.println(blueString.toInt());*/
-              analogWrite(redPin, redString.toInt());
-              analogWrite(greenPin, greenString.toInt());
-              analogWrite(bluePin, blueString.toInt());
+              analogWrite(redPin, 255-redString.toInt());
+              analogWrite(greenPin,255-greenString.toInt());
+              analogWrite(bluePin, 255-blueString.toInt());
+           
             }
             // Break out of the while loop
-            break;
+            //break;
           } else { // if you got a newline, then clear currentLine
             currentLine = "";
           }
